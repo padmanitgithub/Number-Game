@@ -1,0 +1,40 @@
+package test;
+import java.util.*;
+public class RandomNumberGEnerator {
+public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter your name:");
+	String name=sc.nextLine();
+	System.out.println("Hello "+name.toUpperCase()+" Welcome to Guess the number game\n");
+	System.out.println("Game Description:\n   I will generate the random number you have to guess the generated number");
+	System.out.println("Clue:\n   The generated random number is between 1-100 only");
+	System.out.println("You have 3 chances to guess the number");
+	Random tnd=new Random();
+	int random=tnd.nextInt(100)+1;
+	int initialattempts=0;
+	final int maxattempts=3;
+	while(true) {
+		System.out.println("Enter your guess:");
+		try{
+		int guess=sc.nextInt();
+		initialattempts++;
+		if(guess==random) {
+			System.out.println("Congratulations you won the game...");
+		}
+		else if(guess<random) {
+			System.out.println("your guess is lower then the random number! Try again");
+		}else {
+			System.out.println("your guess is higher then the random number! Try again");
+		}
+		if(initialattempts>=maxattempts) {
+			System.out.println("Sorry, you've used all your attempts. The correct number was:"+random);
+			break;
+		}
+	}catch(Exception e) {
+		System.err.println("input should be in numbers only");
+		break;
+	}
+}
+	sc.close();
+}
+}
